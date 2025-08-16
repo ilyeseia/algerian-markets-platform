@@ -20,6 +20,16 @@ const nextConfig: NextConfig = {
     // 构建时忽略ESLint错误
     ignoreDuringBuilds: true,
   },
+  // GitHub Pages configuration
+  output: 'export',
+  trailingSlash: true,
+  distDir: 'out',
+  images: {
+    unoptimized: true,
+  },
+  // Base path for GitHub Pages
+  basePath: process.env.GITHUB_PAGES ? '/algerian-markets-platform' : '',
+  assetPrefix: process.env.GITHUB_PAGES ? '/algerian-markets-platform' : '',
 };
 
 export default nextConfig;
