@@ -1,0 +1,197 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  role      UserRole @default(USER)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  // Relations
+  priceEntries      PriceEntry[]
+  marketAnalyses    MarketAnalysis[]
+  predictions       Prediction[]
+  notifications     Notification[]
+  
+  @@map("users")
+}
+
+model Market {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  location    String
+  region      String
+  latitude    Float?
+  longitude   Float?
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  // Relations
+  vendors    Vendor[]
+  priceEntries PriceEntry[]
+  predictions Prediction[]
+  
+  @@map("markets")
+}
+
+model Vendor {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  phone       String?
+  email       String?
+  address     String?
+  marketId    String
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  // Relations
+  market      Market         @relation(fields: [marketId], references: [id], onDelete: Cascade)
+  priceEntries PriceEntry[]
+  
+  @@map("vendors")
+}
+
+model Category {
+  id          String   @id @default(cuid())
+  name        String   @unique
+  description String?
+  icon        String?
+  color       String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  // Relations
+  products Product[]
+  
+  @@map("categories")
+}
+
+model Product {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  unit        String   @default("unit")
+  categoryId  String
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  // Relations
+  category    Category     @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  priceEntries PriceEntry[]
+  predictions Prediction[]
+  
+  @@map("products")
+}
+
+model PriceEntry {
+  id          String   @id @default(cuid())
+  price       Float
+  currency    String   @default("DZD")
+  date        DateTime @default(now())
+  notes       String?
+  userId      String
+  marketId    String
+  vendorId    String
+  productId   String
+  
+  // Relations
+  user        User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  market      Market       @relation(fields: [marketId], references: [id], onDelete: Cascade)
+  vendor      Vendor       @relation(fields: [vendorId], references: [id], onDelete: Cascade)
+  product     Product      @relation(fields: [productId], references: [id], onDelete: Cascade)
+  
+  @@map("price_entries")
+}
+
+model MarketAnalysis {
+  id          String   @id @default(cuid())
+  title       String
+  content     String
+  type        AnalysisType
+  confidence  Float?
+  userId      String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  // Relations
+  user        User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@map("market_analyses")
+}
+
+model Prediction {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  targetPrice Float
+  confidence  Float
+  productId   String
+  marketId    String
+  userId      String
+  validUntil  DateTime
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  // Relations
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  market  Market  @relation(fields: [marketId], references: [id], onDelete: Cascade)
+  
+  @@map("predictions")
+}
+
+model Notification {
+  id        String           @id @default(cuid())
+  title     String
+  message   String
+  type      NotificationType
+  isRead    Boolean          @default(false)
+  userId    String
+  createdAt DateTime         @default(now())
+  
+  // Relations
+  user      User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@map("notifications")
+}
+
+enum UserRole {
+  USER
+  ADMIN
+  ANALYST
+  VENDOR
+}
+
+enum AnalysisType {
+  PRICE_TREND
+  MARKET_INSIGHT
+  SUPPLY_DEMAND
+  SEASONAL_ANALYSIS
+  COMPETITIVE_ANALYSIS
+}
+
+enum NotificationType {
+  PRICE_ALERT
+  PREDICTION_UPDATE
+  MARKET_NEWS
+  SYSTEM_ALERT
+}
