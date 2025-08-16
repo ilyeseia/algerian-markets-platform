@@ -184,34 +184,34 @@ export default function Home() {
       {/* Header */}
       <header className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div className="flex items-center space-x-4">
               <div className="flex items-center space-x-2">
-                <BarChart3 className="h-8 w-8 text-primary" />
-                <h1 className="text-2xl font-bold">منصة الأسواق الجزائرية</h1>
+                <BarChart3 className="h-6 w-6 sm:h-8 sm:w-8 text-primary" />
+                <h1 className="text-xl sm:text-2xl font-bold">منصة الأسواق الجزائرية</h1>
               </div>
             </div>
-            <div className="flex items-center space-x-4">
-              <Button variant="outline" size="sm">
+            <div className="flex flex-wrap items-center gap-2 w-full sm:w-auto">
+              <Button variant="outline" size="sm" className="flex-1 sm:flex-none">
                 <Search className="h-4 w-4 mr-2" />
-                بحث
+                <span className="hidden sm:inline">بحث</span>
               </Button>
-              <Button variant="outline" size="sm">
+              <Button variant="outline" size="sm" className="flex-1 sm:flex-none">
                 <Bell className="h-4 w-4 mr-2" />
-                الإشعارات
+                <span className="hidden sm:inline">الإشعارات</span>
               </Button>
-              <Button size="sm">
+              <Button size="sm" className="flex-1 sm:flex-none">
                 <Plus className="h-4 w-4 mr-2" />
-                إضافة سعر
+                <span className="hidden sm:inline">إضافة سعر</span>
               </Button>
             </div>
           </div>
         </div>
       </header>
 
-      <div className="container mx-auto px-4 py-6">
+      <div className="container mx-auto px-4 py-4 sm:py-6">
         {/* Key Metrics */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-6 sm:mb-8">
           {metrics.map((metric, index) => (
             <Card key={index}>
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
@@ -219,7 +219,7 @@ export default function Home() {
                 <metric.icon className="h-4 w-4 text-muted-foreground" />
               </CardHeader>
               <CardContent>
-                <div className="text-2xl font-bold">{metric.value}</div>
+                <div className="text-xl sm:text-2xl font-bold">{metric.value}</div>
                 <p className={`text-xs ${
                   metric.trend === 'up' ? 'text-green-600' : 
                   metric.trend === 'down' ? 'text-red-600' : 'text-gray-600'
@@ -232,7 +232,7 @@ export default function Home() {
         </div>
 
         {/* Main Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
           {/* Markets Overview */}
           <div className="lg:col-span-2">
             <Card>
@@ -248,27 +248,29 @@ export default function Home() {
               <CardContent>
                 <div className="space-y-4">
                   {marketData.map((market) => (
-                    <div key={market.id} className="flex items-center justify-between p-4 border rounded-lg">
-                      <div className="flex items-center space-x-4">
-                        <div className="p-2 bg-primary/10 rounded-lg">
+                    <div key={market.id} className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 border rounded-lg gap-4">
+                      <div className="flex items-center space-x-4 w-full sm:w-auto">
+                        <div className="p-2 bg-primary/10 rounded-lg flex-shrink-0">
                           <Store className="h-5 w-5 text-primary" />
                         </div>
-                        <div>
-                          <h3 className="font-semibold">{market.name}</h3>
-                          <div className="flex items-center space-x-2 text-sm text-muted-foreground">
-                            <MapPin className="h-3 w-3" />
-                            <span>{market.location}</span>
-                            <Badge variant="secondary">{market.region}</Badge>
+                        <div className="min-w-0 flex-1">
+                          <h3 className="font-semibold text-base sm:text-lg truncate">{market.name}</h3>
+                          <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
+                            <div className="flex items-center space-x-1">
+                              <MapPin className="h-3 w-3 flex-shrink-0" />
+                              <span className="truncate">{market.location}</span>
+                            </div>
+                            <Badge variant="secondary" className="text-xs">{market.region}</Badge>
                           </div>
                         </div>
                       </div>
-                      <div className="text-right">
-                        <div className="flex items-center space-x-2">
-                          <span className="font-semibold">{market.avgPrice.toFixed(2)} دج</span>
+                      <div className="text-right w-full sm:w-auto">
+                        <div className="flex items-center justify-end space-x-2">
+                          <span className="font-semibold text-base sm:text-lg">{market.avgPrice.toFixed(2)} دج</span>
                           {market.priceChange > 0 ? (
-                            <TrendingUp className="h-4 w-4 text-green-600" />
+                            <TrendingUp className="h-4 w-4 text-green-600 flex-shrink-0" />
                           ) : market.priceChange < 0 ? (
-                            <TrendingDown className="h-4 w-4 text-red-600" />
+                            <TrendingDown className="h-4 w-4 text-red-600 flex-shrink-0" />
                           ) : null}
                         </div>
                         <p className="text-sm text-muted-foreground">
@@ -283,7 +285,7 @@ export default function Home() {
           </div>
 
           {/* Price Alerts */}
-          <div className="space-y-6">
+          <div className="space-y-4 sm:space-y-6">
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
@@ -295,20 +297,20 @@ export default function Home() {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <ScrollArea className="h-96">
+                <ScrollArea className="h-80 sm:h-96">
                   <div className="space-y-4">
                     {priceAlerts.map((alert) => (
                       <div key={alert.id} className="p-3 border rounded-lg">
                         <div className="flex items-center justify-between mb-2">
-                          <h4 className="font-medium">{alert.productName}</h4>
-                          <Badge variant={alert.change > 0 ? "destructive" : "default"}>
+                          <h4 className="font-medium text-sm sm:text-base">{alert.productName}</h4>
+                          <Badge variant={alert.change > 0 ? "destructive" : "default"} className="text-xs">
                             {alert.change > 0 ? '+' : ''}{alert.change.toFixed(1)}%
                           </Badge>
                         </div>
                         <p className="text-sm text-muted-foreground mb-2">
                           {alert.marketName}
                         </p>
-                        <div className="flex items-center justify-between text-sm">
+                        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-sm">
                           <div className="flex items-center space-x-2">
                             <span className="line-through text-muted-foreground">
                               {alert.oldPrice} دج

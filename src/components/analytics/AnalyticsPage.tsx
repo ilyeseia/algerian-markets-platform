@@ -137,16 +137,16 @@ export default function AnalyticsPage() {
       {/* Header */}
       <header className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div className="flex items-center space-x-4">
               <div className="flex items-center space-x-2">
-                <BarChart3 className="h-8 w-8 text-primary" />
-                <h1 className="text-2xl font-bold">تحليلات السوق</h1>
+                <BarChart3 className="h-6 w-6 sm:h-8 sm:w-8 text-primary" />
+                <h1 className="text-xl sm:text-2xl font-bold">تحليلات السوق</h1>
               </div>
             </div>
-            <div className="flex items-center space-x-4">
+            <div className="flex flex-wrap items-center gap-2 w-full sm:w-auto">
               <Select value={selectedTimeframe} onValueChange={handleTimeframeChange}>
-                <SelectTrigger className="w-32">
+                <SelectTrigger className="w-28 sm:w-32">
                   <Calendar className="h-4 w-4 mr-2" />
                   <SelectValue />
                 </SelectTrigger>
@@ -159,20 +159,20 @@ export default function AnalyticsPage() {
               </Select>
               
               <Select value={selectedMarket} onValueChange={handleMarketChange}>
-                <SelectTrigger className="w-40">
+                <SelectTrigger className="w-32 sm:w-40">
                   <MapPin className="h-4 w-4 mr-2" />
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="all">كل الأسواق</SelectItem>
-                  <SelectItem value="1">سوق الجزائر المركزي</SelectItem>
+                  <SelectItem value="1">سوق الجزائر</SelectItem>
                   <SelectItem value="2">سوق وهران</SelectItem>
                   <SelectItem value="3">سوق قسنطينة</SelectItem>
                 </SelectContent>
               </Select>
               
               <Select value={selectedCategory} onValueChange={handleCategoryChange}>
-                <SelectTrigger className="w-32">
+                <SelectTrigger className="w-28 sm:w-32">
                   <ShoppingCart className="h-4 w-4 mr-2" />
                   <SelectValue />
                 </SelectTrigger>
@@ -188,16 +188,16 @@ export default function AnalyticsPage() {
         </div>
       </header>
 
-      <div className="container mx-auto px-4 py-6">
-        <Tabs defaultValue="trends" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-4">
-            <TabsTrigger value="trends">اتجاهات الأسعار</TabsTrigger>
-            <TabsTrigger value="comparison">مقارنة الأسواق</TabsTrigger>
-            <TabsTrigger value="distribution">توزيع الفئات</TabsTrigger>
-            <TabsTrigger value="volatility">تقلبات الأسعار</TabsTrigger>
+      <div className="container mx-auto px-4 py-4 sm:py-6">
+        <Tabs defaultValue="trends" className="space-y-4 sm:space-y-6">
+          <TabsList className="grid w-full grid-cols-2 sm:grid-cols-4">
+            <TabsTrigger value="trends" className="text-xs sm:text-sm">اتجاهات الأسعار</TabsTrigger>
+            <TabsTrigger value="comparison" className="text-xs sm:text-sm">مقارنة الأسواق</TabsTrigger>
+            <TabsTrigger value="distribution" className="text-xs sm:text-sm">توزيع الفئات</TabsTrigger>
+            <TabsTrigger value="volatility" className="text-xs sm:text-sm">تقلبات الأسعار</TabsTrigger>
           </TabsList>
 
-          <TabsContent value="trends" className="space-y-6">
+          <TabsContent value="trends" className="space-y-4 sm:space-y-6">
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
@@ -209,16 +209,18 @@ export default function AnalyticsPage() {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="h-96">
+                <div className="h-72 sm:h-96">
                   <ResponsiveContainer width="100%" height="100%">
                     <LineChart data={mockPriceTrendData}>
                       <CartesianGrid strokeDasharray="3 3" />
                       <XAxis 
                         dataKey="date" 
                         tickFormatter={formatDate}
+                        fontSize={12}
                       />
                       <YAxis 
                         tickFormatter={formatPrice}
+                        fontSize={12}
                       />
                       <Tooltip 
                         formatter={(value: number) => [formatPrice(value), 'السعر']}
@@ -239,27 +241,27 @@ export default function AnalyticsPage() {
               </CardContent>
             </Card>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-lg">متوسط السعر</CardTitle>
+                  <CardTitle className="text-base sm:text-lg">متوسط السعر</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold">{formatPrice(195)}</div>
+                  <div className="text-xl sm:text-2xl font-bold">{formatPrice(195)}</div>
                   <div className="flex items-center space-x-2 text-sm text-green-600">
                     <TrendingUp className="h-4 w-4" />
-                    <span>+22.2% من الأسبوع الماضي</span>
+                    <span className="text-xs sm:text-sm">+22.2% من الأسبوع الماضي</span>
                   </div>
                 </CardContent>
               </Card>
 
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-lg">أعلى سعر</CardTitle>
+                  <CardTitle className="text-base sm:text-lg">أعلى سعر</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold">{formatPrice(220)}</div>
-                  <div className="text-sm text-muted-foreground">
+                  <div className="text-xl sm:text-2xl font-bold">{formatPrice(220)}</div>
+                  <div className="text-xs sm:text-sm text-muted-foreground">
                     7 يناير 2024
                   </div>
                 </CardContent>
@@ -267,11 +269,11 @@ export default function AnalyticsPage() {
 
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-lg">أدنى سعر</CardTitle>
+                  <CardTitle className="text-base sm:text-lg">أدنى سعر</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold">{formatPrice(180)}</div>
-                  <div className="text-sm text-muted-foreground">
+                  <div className="text-xl sm:text-2xl font-bold">{formatPrice(180)}</div>
+                  <div className="text-xs sm:text-sm text-muted-foreground">
                     1 يناير 2024
                   </div>
                 </CardContent>
@@ -279,7 +281,7 @@ export default function AnalyticsPage() {
             </div>
           </TabsContent>
 
-          <TabsContent value="comparison" className="space-y-6">
+          <TabsContent value="comparison" className="space-y-4 sm:space-y-6">
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
@@ -291,12 +293,12 @@ export default function AnalyticsPage() {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="h-96">
+                <div className="h-72 sm:h-96">
                   <ResponsiveContainer width="100%" height="100%">
                     <BarChart data={mockMarketComparisonData}>
                       <CartesianGrid strokeDasharray="3 3" />
-                      <XAxis dataKey="marketName" />
-                      <YAxis tickFormatter={formatPrice} />
+                      <XAxis dataKey="marketName" fontSize={12} />
+                      <YAxis tickFormatter={formatPrice} fontSize={12} />
                       <Tooltip formatter={(value: number) => [formatPrice(value), 'متوسط السعر']} />
                       <Legend />
                       <Bar dataKey="averagePrice" fill="#8884d8" />
@@ -306,25 +308,25 @@ export default function AnalyticsPage() {
               </CardContent>
             </Card>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
               {mockMarketComparisonData.map((market, index) => (
                 <Card key={index}>
                   <CardHeader>
-                    <CardTitle className="text-lg">{market.marketName}</CardTitle>
+                    <CardTitle className="text-base sm:text-lg">{market.marketName}</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-2">
                       <div className="flex justify-between">
                         <span className="text-sm text-muted-foreground">متوسط السعر</span>
-                        <span className="font-semibold">{formatPrice(market.averagePrice)}</span>
+                        <span className="font-semibold text-sm">{formatPrice(market.averagePrice)}</span>
                       </div>
                       <div className="flex justify-between">
                         <span className="text-sm text-muted-foreground">إجمالي المدخلات</span>
-                        <span className="font-semibold">{market.totalEntries}</span>
+                        <span className="font-semibold text-sm">{market.totalEntries}</span>
                       </div>
                       <div className="flex justify-between">
                         <span className="text-sm text-muted-foreground">البائعين النشطين</span>
-                        <span className="font-semibold">{market.activeVendors}</span>
+                        <span className="font-semibold text-sm">{market.activeVendors}</span>
                       </div>
                     </div>
                   </CardContent>
@@ -333,7 +335,7 @@ export default function AnalyticsPage() {
             </div>
           </TabsContent>
 
-          <TabsContent value="distribution" className="space-y-6">
+          <TabsContent value="distribution" className="space-y-4 sm:space-y-6">
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
@@ -345,7 +347,7 @@ export default function AnalyticsPage() {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="h-96">
+                <div className="h-72 sm:h-96">
                   <ResponsiveContainer width="100%" height="100%">
                     <PieChart>
                       <Pie
@@ -354,7 +356,7 @@ export default function AnalyticsPage() {
                         cy="50%"
                         labelLine={false}
                         label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
-                        outerRadius={80}
+                        outerRadius={60}
                         fill="#8884d8"
                         dataKey="value"
                       >
@@ -369,18 +371,18 @@ export default function AnalyticsPage() {
               </CardContent>
             </Card>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 sm:gap-4">
               {mockCategoryDistributionData.map((category, index) => (
                 <Card key={index}>
-                  <CardContent className="p-4">
-                    <div className="flex items-center space-x-3">
+                  <CardContent className="p-3 sm:p-4">
+                    <div className="flex items-center space-x-2 sm:space-x-3">
                       <div 
-                        className="w-4 h-4 rounded-full" 
+                        className="w-3 h-3 sm:w-4 sm:h-4 rounded-full flex-shrink-0" 
                         style={{ backgroundColor: category.color }}
                       />
-                      <div>
-                        <div className="font-semibold">{category.name}</div>
-                        <div className="text-sm text-muted-foreground">
+                      <div className="min-w-0">
+                        <div className="font-semibold text-xs sm:text-sm truncate">{category.name}</div>
+                        <div className="text-xs text-muted-foreground">
                           {category.value}%
                         </div>
                       </div>
@@ -391,7 +393,7 @@ export default function AnalyticsPage() {
             </div>
           </TabsContent>
 
-          <TabsContent value="volatility" className="space-y-6">
+          <TabsContent value="volatility" className="space-y-4 sm:space-y-6">
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
@@ -403,12 +405,12 @@ export default function AnalyticsPage() {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="h-96">
+                <div className="h-72 sm:h-96">
                   <ResponsiveContainer width="100%" height="100%">
                     <BarChart data={mockPriceVolatilityData}>
                       <CartesianGrid strokeDasharray="3 3" />
-                      <XAxis dataKey="productName" />
-                      <YAxis />
+                      <XAxis dataKey="productName" fontSize={12} />
+                      <YAxis fontSize={12} />
                       <Tooltip formatter={(value: number) => [`${value.toFixed(1)}%`, 'معدل التقلب']} />
                       <Legend />
                       <Bar dataKey="volatility" fill="#ff7300" />
@@ -418,23 +420,23 @@ export default function AnalyticsPage() {
               </CardContent>
             </Card>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
               {mockPriceVolatilityData.map((product, index) => (
                 <Card key={index}>
                   <CardHeader>
-                    <CardTitle className="text-lg">{product.productName}</CardTitle>
+                    <CardTitle className="text-base sm:text-lg">{product.productName}</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-4">
                       <div className="flex justify-between items-center">
                         <span className="text-sm text-muted-foreground">معدل التقلب</span>
-                        <Badge variant={product.volatility > 10 ? "destructive" : "secondary"}>
+                        <Badge variant={product.volatility > 10 ? "destructive" : "secondary"} className="text-xs">
                           {product.volatility.toFixed(1)}%
                         </Badge>
                       </div>
                       <div className="flex justify-between">
                         <span className="text-sm text-muted-foreground">متوسط السعر</span>
-                        <span className="font-semibold">{formatPrice(product.averagePrice)}</span>
+                        <span className="font-semibold text-sm">{formatPrice(product.averagePrice)}</span>
                       </div>
                       <div className="w-full bg-gray-200 rounded-full h-2">
                         <div 
