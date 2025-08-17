@@ -1,141 +1,142 @@
-# 🚀 Welcome to Z.ai Code Scaffold
+# منصة الأسواق الجزائرية
 
-A modern, production-ready web application scaffold powered by cutting-edge technologies, designed to accelerate your development with [Z.ai](https://chat.z.ai)'s AI-powered coding assistance.
+منصة متكاملة لمراقبة وتحليل أسواق الجزائر مع تحديثات يومية مدعومة بالذكاء الاصطناعي.
 
-## ✨ Technology Stack
+## 🚀 المميزات
 
-This scaffold provides a robust foundation built with:
+- **لوحة تحكم باللغة العربية** - واجهة مستخدم سهلة الاستخدام باللغة العربية
+- **تحديثات فورية** - بيانات الأسواق في الوقت الفعلي
+- **تحليلات متقدمة** - رسوم بيانية وتقارير مفصلة
+- **تنبيهات الأسعار** - إشعارات فورية عند تغير الأسعار
+- **تصميم متجاوب** - يعمل على جميع الأجهزة (موبايل، تابلت، كمبيوتر)
+- **نشر تلقائي** - نشر تلقائي على GitHub Pages
 
-### 🎯 Core Framework
-- **⚡ Next.js 15** - The React framework for production with App Router
-- **📘 TypeScript 5** - Type-safe JavaScript for better developer experience
-- **🎨 Tailwind CSS 4** - Utility-first CSS framework for rapid UI development
+## 🛠️ التقنيات المستخدمة
 
-### 🧩 UI Components & Styling
-- **🧩 shadcn/ui** - High-quality, accessible components built on Radix UI
-- **🎯 Lucide React** - Beautiful & consistent icon library
-- **🌈 Framer Motion** - Production-ready motion library for React
-- **🎨 Next Themes** - Perfect dark mode in 2 lines of code
+- **Frontend**: Next.js 15, React 19, TypeScript
+- **Styling**: Tailwind CSS, shadcn/ui
+- **Charts**: Recharts
+- **Database**: Prisma ORM with SQLite
+- **Real-time**: Socket.io
+- **AI**: z-ai-web-dev-sdk
+- **Deployment**: GitHub Pages, GitHub Actions
 
-### 📋 Forms & Validation
-- **🎣 React Hook Form** - Performant forms with easy validation
-- **✅ Zod** - TypeScript-first schema validation
+## 📱 روابط المشروع
 
-### 🔄 State Management & Data Fetching
-- **🐻 Zustand** - Simple, scalable state management
-- **🔄 TanStack Query** - Powerful data synchronization for React
-- **🌐 Axios** - Promise-based HTTP client
+- **المستودع**: https://github.com/ilyeseia/algerian-markets-platform
+- **الموقع**: https://ilyeseia.github.io/algerian-markets-platform
 
-### 🗄️ Database & Backend
-- **🗄️ Prisma** - Next-generation Node.js and TypeScript ORM
-- **🔐 NextAuth.js** - Complete open-source authentication solution
+## 🚀 التثبيت والتشغيل
 
-### 🎨 Advanced UI Features
-- **📊 TanStack Table** - Headless UI for building tables and datagrids
-- **🖱️ DND Kit** - Modern drag and drop toolkit for React
-- **📊 Recharts** - Redefined chart library built with React and D3
-- **🖼️ Sharp** - High performance image processing
+### المتطلبات
+- Node.js 18 أو أحدث
+- npm أو yarn
 
-### 🌍 Internationalization & Utilities
-- **🌍 Next Intl** - Internationalization library for Next.js
-- **📅 Date-fns** - Modern JavaScript date utility library
-- **🪝 ReactUse** - Collection of essential React hooks for modern development
-
-## 🎯 Why This Scaffold?
-
-- **🏎️ Fast Development** - Pre-configured tooling and best practices
-- **🎨 Beautiful UI** - Complete shadcn/ui component library with advanced interactions
-- **🔒 Type Safety** - Full TypeScript configuration with Zod validation
-- **📱 Responsive** - Mobile-first design principles with smooth animations
-- **🗄️ Database Ready** - Prisma ORM configured for rapid backend development
-- **🔐 Auth Included** - NextAuth.js for secure authentication flows
-- **📊 Data Visualization** - Charts, tables, and drag-and-drop functionality
-- **🌍 i18n Ready** - Multi-language support with Next Intl
-- **🚀 Production Ready** - Optimized build and deployment settings
-- **🤖 AI-Friendly** - Structured codebase perfect for AI assistance
-
-## 🚀 Quick Start
-
+### التثبيت المحلي
 ```bash
-# Install dependencies
+# استنساخ المستودع
+git clone https://github.com/ilyeseia/algerian-markets-platform.git
+
+# الدخول إلى المجلد
+cd algerian-markets-platform
+
+# تثبيت الاعتماديات
 npm install
 
-# Start development server
+# تشغيل بيئة التطوير
 npm run dev
-
-# Build for production
-npm run build
-
-# Start production server
-npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to see your application running.
+### بناء المشروع
+```bash
+# بناء المشروع للإنتاج
+npm run build
 
-## 🤖 Powered by Z.ai
+# تصدير المشروع للنشر الثابت
+npm run export
+```
 
-This scaffold is optimized for use with [Z.ai](https://chat.z.ai) - your AI assistant for:
-
-- **💻 Code Generation** - Generate components, pages, and features instantly
-- **🎨 UI Development** - Create beautiful interfaces with AI assistance  
-- **🔧 Bug Fixing** - Identify and resolve issues with intelligent suggestions
-- **📝 Documentation** - Auto-generate comprehensive documentation
-- **🚀 Optimization** - Performance improvements and best practices
-
-Ready to build something amazing? Start chatting with Z.ai at [chat.z.ai](https://chat.z.ai) and experience the future of AI-powered development!
-
-## 📁 Project Structure
+## 📊 هيكل المشروع
 
 ```
 src/
-├── app/                 # Next.js App Router pages
-├── components/          # Reusable React components
-│   └── ui/             # shadcn/ui components
-├── hooks/              # Custom React hooks
-└── lib/                # Utility functions and configurations
+├── app/                    # صفحات التطبيق
+│   ├── page.tsx           # الصفحة الرئيسية
+│   ├── layout.tsx         # التخطيط الرئيسي
+│   └── globals.css        # الأنماط العامة
+├── components/            # المكونات
+│   ├── ui/               # مكونات واجهة المستخدم
+│   └── analytics/        # مكونات التحليلات
+└── lib/                  # المكتبات المساعدة
+    ├── db.ts             # إعدادات قاعدة البيانات
+    ├── socket.ts         # إعدادات WebSocket
+    └── utils.ts          # وظائف مساعدة
 ```
 
-## 🎨 Available Features & Components
+## 🔧 الإعدادات
 
-This scaffold includes a comprehensive set of modern web development tools:
+### متغيرات البيئة
+```env
+# قاعدة البيانات
+DATABASE_URL="file:./dev.db"
 
-### 🧩 UI Components (shadcn/ui)
-- **Layout**: Card, Separator, Aspect Ratio, Resizable Panels
-- **Forms**: Input, Textarea, Select, Checkbox, Radio Group, Switch
-- **Feedback**: Alert, Toast (Sonner), Progress, Skeleton
-- **Navigation**: Breadcrumb, Menubar, Navigation Menu, Pagination
-- **Overlay**: Dialog, Sheet, Popover, Tooltip, Hover Card
-- **Data Display**: Badge, Avatar, Calendar
+# GitHub Pages
+GITHUB_PAGES=true
 
-### 📊 Advanced Data Features
-- **Tables**: Powerful data tables with sorting, filtering, pagination (TanStack Table)
-- **Charts**: Beautiful visualizations with Recharts
-- **Forms**: Type-safe forms with React Hook Form + Zod validation
+# رابط التطبيق
+NEXT_PUBLIC_APP_URL="https://ilyeseia.github.io/algerian-markets-platform"
+```
 
-### 🎨 Interactive Features
-- **Animations**: Smooth micro-interactions with Framer Motion
-- **Drag & Drop**: Modern drag-and-drop functionality with DND Kit
-- **Theme Switching**: Built-in dark/light mode support
+## 🚀 النشر
 
-### 🔐 Backend Integration
-- **Authentication**: Ready-to-use auth flows with NextAuth.js
-- **Database**: Type-safe database operations with Prisma
-- **API Client**: HTTP requests with Axios + TanStack Query
-- **State Management**: Simple and scalable with Zustand
+### النشر على GitHub Pages
+1. قم بإنشاء fork للمستودع
+2. قم بتمكين GitHub Pages في إعدادات المستودع
+3. اختر فرع `gh-pages` كمصدر
+4. سيتم النشر تلقائياً عبر GitHub Actions
 
-### 🌍 Production Features
-- **Internationalization**: Multi-language support with Next Intl
-- **Image Optimization**: Automatic image processing with Sharp
-- **Type Safety**: End-to-end TypeScript with Zod validation
-- **Essential Hooks**: 100+ useful React hooks with ReactUse for common patterns
+### النشر على خادم
+```bash
+# بناء المشروع
+npm run build
 
-## 🤝 Get Started with Z.ai
+# نشر الملفات الثابتة
+npm run export
+```
 
-1. **Clone this scaffold** to jumpstart your project
-2. **Visit [chat.z.ai](https://chat.z.ai)** to access your AI coding assistant
-3. **Start building** with intelligent code generation and assistance
-4. **Deploy with confidence** using the production-ready setup
+## 📈 البيانات الوهمية
+
+المشروع يستخدم بيانات وهمية للأغراض التوضيحية:
+- **الأسواق**: سوق الجزائر المركزي، سوق وهران، سوق قسنطينة
+- **المنتجات**: طماطم، بطاطس، برتقال
+- **الأسعار**: أسعار دينار جزائري (دج)
+
+## 🤝 المساهمة
+
+نرحب بجميع المساهمات! يرجى اتباع الخطوات التالية:
+
+1. Fork المشروع
+2. إنشاء فرع جديد (`git checkout -b feature/AmazingFeature`)
+3. Commit التغييرات (`git commit -m 'Add some AmazingFeature'`)
+4. Push إلى الفرع (`git push origin feature/AmazingFeature`)
+5. إنشاء Pull Request
+
+## 📄 الرخصة
+
+هذا المشروع مرخص تحت رخصة MIT - راجع ملف [LICENSE](LICENSE) للتفاصيل.
+
+## 🙏 الشكر والتقدير
+
+- شكراً لـ Next.js على إطار العمل الممتاز
+- شكراً لـ Tailwind CSS على نظام التصميم
+- شكراً لـ shadcn/ui على المكونات الجميلة
+
+## 📞 التواصل
+
+- **المؤلف**: ilyeseia
+- **البريد الإلكتروني**: [GitHub Profile](https://github.com/ilyeseia)
+- **المشروع**: https://github.com/ilyeseia/algerian-markets-platform
 
 ---
 
-Built with ❤️ for the developer community. Supercharged by [Z.ai](https://chat.z.ai) 🚀
+⭐ إذا كان هذا المشروع مفيداً، يرجى إعطائه نجمة!
