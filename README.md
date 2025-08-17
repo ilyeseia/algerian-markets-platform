@@ -1,58 +1,83 @@
-# 🚀 Welcome to Z.ai Code Scaffold
+🚀 Bienvenue sur Code Scaffold by Ilyes
 
-A modern, production-ready web application scaffold powered by cutting-edge technologies, designed to accelerate your development with [Z.ai](https://chat.z.ai)'s AI-powered coding assistance.
+Salut 👋, je suis Ilyes, et voici mon scaffold moderne et prêt pour la production, conçu pour accélérer le développement grâce aux technologies les plus récentes.
 
-## ✨ Technology Stack
+✨ Stack Technologique
+🎯 Core Framework
 
-This scaffold provides a robust foundation built with:
+⚡ Next.js 15 – Framework React de production avec App Router
 
-### 🎯 Core Framework
-- **⚡ Next.js 15** - The React framework for production with App Router
-- **📘 TypeScript 5** - Type-safe JavaScript for better developer experience
-- **🎨 Tailwind CSS 4** - Utility-first CSS framework for rapid UI development
+📘 TypeScript 5 – JavaScript typé pour une meilleure DX
 
-### 🧩 UI Components & Styling
-- **🧩 shadcn/ui** - High-quality, accessible components built on Radix UI
-- **🎯 Lucide React** - Beautiful & consistent icon library
-- **🌈 Framer Motion** - Production-ready motion library for React
-- **🎨 Next Themes** - Perfect dark mode in 2 lines of code
+🎨 Tailwind CSS 4 – Framework CSS utilitaire pour un design rapide et élégant
 
-### 📋 Forms & Validation
-- **🎣 React Hook Form** - Performant forms with easy validation
-- **✅ Zod** - TypeScript-first schema validation
+🧩 UI & Styling
 
-### 🔄 State Management & Data Fetching
-- **🐻 Zustand** - Simple, scalable state management
-- **🔄 TanStack Query** - Powerful data synchronization for React
-- **🌐 Axios** - Promise-based HTTP client
+🧩 shadcn/ui – Composants accessibles et de haute qualité (basés sur Radix UI)
 
-### 🗄️ Database & Backend
-- **🗄️ Prisma** - Next-generation Node.js and TypeScript ORM
-- **🔐 NextAuth.js** - Complete open-source authentication solution
+🎯 Lucide React – Bibliothèque d’icônes modernes et cohérentes
 
-### 🎨 Advanced UI Features
-- **📊 TanStack Table** - Headless UI for building tables and datagrids
-- **🖱️ DND Kit** - Modern drag and drop toolkit for React
-- **📊 Recharts** - Redefined chart library built with React and D3
-- **🖼️ Sharp** - High performance image processing
+🌈 Framer Motion – Animations fluides et prêtes pour la prod
 
-### 🌍 Internationalization & Utilities
-- **🌍 Next Intl** - Internationalization library for Next.js
-- **📅 Date-fns** - Modern JavaScript date utility library
-- **🪝 ReactUse** - Collection of essential React hooks for modern development
+🎨 Next Themes – Dark mode en 2 lignes de code
 
-## 🎯 Why This Scaffold?
+📋 Formulaires & Validation
 
-- **🏎️ Fast Development** - Pre-configured tooling and best practices
-- **🎨 Beautiful UI** - Complete shadcn/ui component library with advanced interactions
-- **🔒 Type Safety** - Full TypeScript configuration with Zod validation
-- **📱 Responsive** - Mobile-first design principles with smooth animations
-- **🗄️ Database Ready** - Prisma ORM configured for rapid backend development
-- **🔐 Auth Included** - NextAuth.js for secure authentication flows
-- **📊 Data Visualization** - Charts, tables, and drag-and-drop functionality
-- **🌍 i18n Ready** - Multi-language support with Next Intl
-- **🚀 Production Ready** - Optimized build and deployment settings
-- **🤖 AI-Friendly** - Structured codebase perfect for AI assistance
+🎣 React Hook Form – Formulaires performants et simples à valider
+
+✅ Zod – Validation robuste avec TypeScript-first schema
+
+🔄 State Management & Data Fetching
+
+🐻 Zustand – Gestion d’état simple et scalable
+
+🔄 TanStack Query – Synchronisation et fetching avancés
+
+🌐 Axios – Client HTTP basé sur les promesses
+
+🗄️ Base de Données & Backend
+
+🗄️ Prisma – ORM moderne pour Node.js & TypeScript
+
+🔐 NextAuth.js – Authentification complète et sécurisée
+
+🎨 UI Avancée
+
+📊 TanStack Table – Tables et datagrids hautement personnalisables
+
+🖱️ DND Kit – Toolkit moderne pour le drag & drop
+
+📊 Recharts – Librairie de graphiques basée sur React & D3
+
+🖼️ Sharp – Traitement d’images performant
+
+🌍 Internationalisation & Outils
+
+🌍 Next Intl – Gestion multilingue pour Next.js
+
+📅 Date-fns – Librairie moderne pour manipuler les dates
+
+🪝 ReactUse – Collection de hooks essentiels pour React
+
+🎯 Pourquoi ce Scaffold by Ilyes ?
+
+🏎️ Dév. Ultra-Rapide – Outils préconfigurés et bonnes pratiques incluses
+
+🎨 UI Soignée – Composants shadcn/ui + interactions avancées
+
+🔒 Type Safety – Full TypeScript + validation Zod
+
+📱 Responsive & Animé – Design mobile-first avec transitions fluides
+
+🗄️ Database Ready – Prisma déjà configuré
+
+🔐 Auth Inclus – NextAuth.js prêt à l’emploi
+
+📊 Visualisation de Données – Graphiques, tables, drag & drop intégrés
+
+🌍 i18n Friendly – Multi-langues avec Next Intl
+
+🚀 Prod Ready – Config optimisée pour déploiement réel
 
 ## 🚀 Quick Start
 
